@@ -41,7 +41,7 @@ if __name__ == "__main__":
 	fileName=DIR+"/Sheets/tmp_thought.json"
 	if len(sys.argv) >= 2:
 		fileName = sys.argv[1]
-	print "fileName:", fileName
+	print("fileName:", fileName)
 
 	sheet = Sheet(root=tk_root, canvas=tk_canvas, fileName=fileName)
 	

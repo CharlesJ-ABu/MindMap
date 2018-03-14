@@ -490,7 +490,7 @@ class Thought:
 		self.cursorPos = (event.x, event.y)
 		#print "drag:", event.x, event.y
 		#self.moveTo((1.0*event.x/self.root.winfo_width(), 1.0*event.y/self.root.winfo_height()))
-		self.moveBy((1.0*delta[0]/self.root.winfo_width(), 1.0*delta[1]/self.root.winfo_height()))
+		self.moveBy(1.0*delta[0]/self.root.winfo_width(), 1.0*delta[1]/self.root.winfo_height())
 
 		self.parentSheet.updateNodeEdges(self)
 		return
@@ -580,7 +580,7 @@ class Thought:
 					data = {'text': output, 'radius':max(self.z_r*0.5, 15), 'fontSize':self.z_fontSize}
 					self.parentSheet.addThought(coords=newLoc, data=data)
 			except:
-				print "Command failed: ", cmdStr
+				print("Command failed: ", cmdStr)
 				pass
 
 	def linkAdd(self, importance=1):
@@ -609,7 +609,7 @@ class Thought:
 			self.parentSheet.addLink()
 
 
-	def moveByPix(self, (x,y)):
+	def moveByPix(self, x, y):
 
 		newX, newY = self.pixLoc[0] + x, self.pixLoc[1]+y
 
@@ -622,7 +622,7 @@ class Thought:
 
 		self.parentSheet.updateNodeEdges(self)
 
-	def moveBy(self, (x, y)):
+	def moveBy(self, x, y):
 		newX = self.loc[0]+x #max(min(self.loc[0]+x, 1), 0)
 		newY = self.loc[1]+y #max(min(self.loc[1]+y, 1), 0)
 		
@@ -630,7 +630,7 @@ class Thought:
 
 		self.reDraw()
 
-	def moveTo(self, (x, y)):
+	def moveTo(self, x, y):
 		# must provide normalized coords (0-1)
 		self.moveBy((x - self.loc[0], y - self.loc[1]))
 
@@ -940,7 +940,7 @@ class Thought:
 			# make the jumping smoother
 			dt = -1.0*math.atan(2*(2*f1-1.0))
 			self.z_height += dt*pixMove
-			self.moveByPix((0,-1.0*pixMove*dt))
+			self.moveByPix(0,-1.0*pixMove*dt)
 
 			t = threading.Timer(0.03, self.pulse, [[], stage+1, height])
 			t.daemon = True

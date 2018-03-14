@@ -88,7 +88,7 @@ class Sheet:
 			self.cursorPos = (event.x, event.y)
 
 			for t in self.thoughts:
-				t.moveByPix((delta[0],delta[1]))
+				t.moveByPix(delta[0],delta[1])
 			for l in self.links:
 				l.updateLine()
 
@@ -128,7 +128,7 @@ class Sheet:
 		
 		geomD = geom.replace('+', ' ').replace('x', ' ').split()
 		geomD = [int(d) for d in geomD]
-		geomD2 = [geomD[0], geomD[1], g.WIDTH/2 - geomD[0]/2, g.HEIGHT/2 - geomD[1]/2]
+		geomD2 = [geomD[0], geomD[1], int(g.WIDTH/2 - geomD[0]/2), int(g.HEIGHT/2 - geomD[1]/2)]
 		geom = '%sx%s+%s+%s'%tuple(geomD2)
 		self.root.geometry(geom)
 
@@ -371,7 +371,7 @@ class Sheet:
 		tB = self.linkB
 
 		if tA == -1 or tB == -1:
-			print "ERROR: a link end not assigned"
+			print("ERROR: a link end not assigned")
 
 		if tA != tB and not self.hasLink(tA, tB):
 			self.links.append(Link(self, self.getThought(tA), self.getThought(tB), importance=self.linkImportance))

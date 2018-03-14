@@ -1,18 +1,18 @@
-from Tkinter import *
+from tkinter import *
 from fileIO import *
 
 from calculations import *
 import threading
 
-import ImageTk
+from PIL import ImageTk
 
 import random
 import time
 
 import sys
 
-DIR = "/home/tanner/Dropbox/sandbox/MindMap"
+DIR = "D:\\PycharmProjects\\MindMap"
 
-sys.path.insert(0, DIR+'/GraphicsTools/')
+sys.path.insert(0, DIR+'\\GraphicsTools\\')
 import graphicsTools as g
 
